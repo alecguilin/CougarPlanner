@@ -1,0 +1,77 @@
+{
+  "project_info": {
+    "project_number": "413652702516",
+    "firebase_url": "https://campus-planner-67c1d.firebaseio.com",
+    "project_id": "campus-planner-67c1d",
+    "storage_bucket": "campus-planner-67c1d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:413652702516:android:e6aa8d72ebfecd30364161",
+        "android_client_info": {
+          "package_name": "com.example.campusplanner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "413652702516-va870gpqmncl32mpgj2u1lak6qa0nque.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTsVebESEJzA61VGrEzv2-7kFN2tZmFfA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "413652702516-va870gpqmncl32mpgj2u1lak6qa0nque.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:413652702516:android:d9ba61e2a3ef4dc2364161",
+        "android_client_info": {
+          "package_name": "csusm.cs443.cougarplanner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "413652702516-c5n4dqaos342d7kbqnfqm7hvj9qqjpan.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "csusm.cs443.cougarplanner",
+            "certificate_hash": "1aed7f5405a44512d5cf0a61db28d328f9c08e0d"
+          }
+        },
+        {
+          "client_id": "413652702516-va870gpqmncl32mpgj2u1lak6qa0nque.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTsVebESEJzA61VGrEzv2-7kFN2tZmFfA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "413652702516-va870gpqmncl32mpgj2u1lak6qa0nque.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
