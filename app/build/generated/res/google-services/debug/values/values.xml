@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">413652702516-va870gpqmncl32mpgj2u1lak6qa0nque.apps.googleusercontent.com</string>
+    <string name="firebase_database_url" translatable="false">https://campus-planner-67c1d.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">413652702516</string>
+    <string name="google_api_key" translatable="false">AIzaSyBTsVebESEJzA61VGrEzv2-7kFN2tZmFfA</string>
+    <string name="google_app_id" translatable="false">1:413652702516:android:d9ba61e2a3ef4dc2364161</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyBTsVebESEJzA61VGrEzv2-7kFN2tZmFfA</string>
+    <string name="google_storage_bucket" translatable="false">campus-planner-67c1d.appspot.com</string>
+    <string name="project_id" translatable="false">campus-planner-67c1d</string>
+</resources>

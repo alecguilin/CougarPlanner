@@ -9,6 +9,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ViewSingleTask"></activity>
+        <activity android:name=".ViewTasksCalendar" />
+        <activity android:name=".CreateNewClass" />
+        <activity android:name=".CreateNewTask" />
+        <activity android:name=".Logged_in_main_view" />
+        <activity
+            android:name=".ui.login.LoginActivity"
+            android:label="@string/title_activity_login" />
+        <activity android:name=".ActivityTwo" />
+        <activity
+            android:name=".Activity2"
+            android:label="@string/title_activity_2"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
