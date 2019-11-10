@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ViewSingleTask"></activity>
+        <activity android:name=".ViewFriends"></activity>
+        <activity android:name=".ViewSingleTask" />
         <activity android:name=".ViewTasksCalendar" />
         <activity android:name=".CreateNewClass" />
         <activity android:name=".CreateNewTask" />

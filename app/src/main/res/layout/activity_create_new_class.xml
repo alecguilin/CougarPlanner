@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".CreateNewClass">
 
+
     <ToggleButton
         android:id="@+id/satBtn"
         android:layout_width="46dp"
@@ -147,8 +148,9 @@
         android:textOff="Wed"
         android:textOn="Wed"
         android:textSize="10sp"
-        app:layout_constraintTop_toBottomOf="@+id/DaysLbl"
-        tools:layout_editor_absoluteX="182dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/DaysLbl" />
 
     <ToggleButton
         android:id="@+id/tueBtn"
