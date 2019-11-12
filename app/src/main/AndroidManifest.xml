@@ -9,7 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ViewFriends"></activity>
+        <activity android:name=".ViewMyClasses"></activity>
+        <activity android:name=".ViewSingleClass" />
+        <activity android:name=".EditProfile" />
+        <activity android:name=".ViewProfile" />
+        <activity android:name=".ViewSingleFriend" />
+        <activity android:name=".ViewFriends" />
         <activity android:name=".ViewSingleTask" />
         <activity android:name=".ViewTasksCalendar" />
         <activity android:name=".CreateNewClass" />
