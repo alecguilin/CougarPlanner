@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ViewMyClasses"></activity>
+        <activity android:name=".searchNewFriends"></activity>
+        <activity android:name=".ViewMyTasks" />
+        <activity android:name=".ViewMyClasses" />
         <activity android:name=".ViewSingleClass" />
         <activity android:name=".EditProfile" />
         <activity android:name=".ViewProfile" />
