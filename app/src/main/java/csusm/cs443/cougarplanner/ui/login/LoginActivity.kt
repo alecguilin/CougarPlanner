@@ -33,6 +33,9 @@ class LoginActivity : AppCompatActivity() {
         val password = findViewById<EditText>(R.id.password)
         val Login = findViewById<Button>(R.id.Login)
 
+        //add progress bar
+        val pb = findViewById(R.id.loading) as ProgressBar
+
 
         Login.setOnClickListener {
             val uname: String = username.text.toString()
@@ -45,7 +48,7 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(applicationContext, "Password must be at least five characters long", Toast.LENGTH_SHORT).show()
             }
 
-
+            pb.visibility = ProgressBar.VISIBLE
 
             //firebase authentication
             //authenticates the user via firebase given user input
@@ -54,10 +57,16 @@ class LoginActivity : AppCompatActivity() {
             //email: TeamNIWWD@gmail.com
             //pass: cougars
             mAuth.signInWithEmailAndPassword(uname, pass).addOnCompleteListener(this) { task ->
+
+
+
                 if (task.isSuccessful) {
 
                     // Sign in success
                     Toast.makeText(applicationContext, "Login Success!", Toast.LENGTH_SHORT).show()
+
+                    //remove progress bar
+                    pb.visibility = ProgressBar.INVISIBLE
 
                     //once successfully logged in, logged_in_main_view becomes the new root activity
                     //this removes the ability for the user to use the back button to access the previous 2 activities
