@@ -15,16 +15,19 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
 import csusm.cs443.cougarplanner.Logged_in_main_view
 
 import csusm.cs443.cougarplanner.R
 
 class LoginActivity : AppCompatActivity() {
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        // Initialize Firebase Auth
+        val mAuth = FirebaseAuth.getInstance()
 
         val username = findViewById<EditText>(R.id.username)
         val password = findViewById<EditText>(R.id.password)
@@ -41,13 +44,34 @@ class LoginActivity : AppCompatActivity() {
             if (pass.trim().length == 5){
                 Toast.makeText(applicationContext, "Password must be at least five characters long", Toast.LENGTH_SHORT).show()
             }
-            if (uname.equals("TeamNIWWD") && (pass.equals("cougars"))){
-                val intent = Intent(this, Logged_in_main_view::class.java)
-                startActivity(intent)
-            }
 
-            else{
-                Toast.makeText(applicationContext, "ERROR: wrong username or password", Toast.LENGTH_SHORT).show()
+
+
+            //firebase authentication
+            //authenticates the user via firebase given user input
+
+            //our account:
+            //email: TeamNIWWD@gmail.com
+            //pass: cougars
+            mAuth.signInWithEmailAndPassword(uname, pass).addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+
+                    // Sign in success
+                    Toast.makeText(applicationContext, "Login Success!", Toast.LENGTH_SHORT).show()
+
+                    //once successfully logged in, logged_in_main_view becomes the new root activity
+                    //this removes the ability for the user to use the back button to access the previous 2 activities
+
+                    //when user re opens app they are brought back to the beginning, requiring another log in
+                    //we can change this implementation later
+
+                    val intent = Intent(this, Logged_in_main_view::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                    startActivity(intent)
+                } else {
+                    Toast.makeText(applicationContext, "ERROR: wrong username or password", Toast.LENGTH_SHORT).show()
+                }
             }
         }
     }
