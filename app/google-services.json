@@ -44,14 +44,6 @@
       },
       "oauth_client": [
         {
-          "client_id": "413652702516-gcnh1dn91ft06t4a2udk8jii4il01iu9.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "csusm.cs443.cougarplanner",
-            "certificate_hash": "3498c448838c50836cae7ae907ddbba9dfe38aad"
-          }
-        },
-        {
           "client_id": "413652702516-om74q0c0u8stdoluljmn3utuhucfb696.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

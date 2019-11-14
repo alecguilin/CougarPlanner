@@ -7,58 +7,59 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/loginButton"
+        android:id="@+id/BIGBUTTON"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Let's Get Started"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="308dp"
+        android:text="Click here to login"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/getStartedLbl"
+        app:layout_constraintTop_toBottomOf="@+id/loginLbl"
         app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/mainPageLbl"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Campus Planner"
+        android:textSize="36sp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline26"
+        app:layout_constraintHorizontal_bias="0.525"
+        app:layout_constraintStart_toStartOf="@+id/guideline25"
+        app:layout_constraintTop_toTopOf="@+id/guideline27" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline25"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="64dp" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline26"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_begin="48dp" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline27"
+        android:id="@+id/guideline26"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_begin="364dp" />
 
-    <TextView
-        android:id="@+id/titleLbl"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline27"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Campus Planner"
-        android:textSize="36sp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline27"
-        app:layout_constraintStart_toStartOf="@+id/guideline26"
-        app:layout_constraintTop_toTopOf="@+id/guideline25" />
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="64dp" />
 
     <TextView
-        android:id="@+id/getStartedLbl"
+        android:id="@+id/loginLbl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="160dp"
-        android:text="Click here to login/sign up"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline27"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="@+id/guideline26"
-        app:layout_constraintTop_toBottomOf="@+id/titleLbl" />
-
+        android:layout_marginTop="204dp"
+        android:text="Let's Get Started"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline26"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="@+id/guideline25"
+        app:layout_constraintTop_toBottomOf="@+id/mainPageLbl" />
 </androidx.constraintlayout.widget.ConstraintLayout>

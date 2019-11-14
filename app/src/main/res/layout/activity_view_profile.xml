@@ -21,7 +21,7 @@
         app:layout_constraintGuide_begin="364dp" />
 
     <TextView
-        android:id="@+id/editProfileLbl"
+        android:id="@+id/ViewProfileLbl"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Your Profile"
