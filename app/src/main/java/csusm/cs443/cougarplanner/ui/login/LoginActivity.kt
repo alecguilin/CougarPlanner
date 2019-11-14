@@ -79,7 +79,6 @@ class LoginActivity : AppCompatActivity() {
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
                     startActivity(intent)
                 } else {
-                    pb.visibility = ProgressBar.INVISIBLE
                     Toast.makeText(applicationContext, "ERROR: wrong username or password", Toast.LENGTH_SHORT).show()
                 }
             }
