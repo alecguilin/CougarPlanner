@@ -46,6 +46,19 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
+        android:id="@+id/sign_out"
+        android:layout_width="230dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="8dp"
+        android:text="Sign Out"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.353"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/goto_my_tasks"
+        app:layout_constraintVertical_bias="0.932" />
+
+    <Button
         android:id="@+id/goto_my_courses"
         android:layout_width="230dp"
         android:layout_height="51dp"
