@@ -11,8 +11,6 @@ class ViewMyTasks : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_my_tasks)
 
-        CourseSubmitButton.setOnClickListener {
-            startActivity(Intent(this, CreateNewTask::class.java))
-        }
+
     }
 }

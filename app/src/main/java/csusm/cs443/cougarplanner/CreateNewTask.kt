@@ -20,14 +20,15 @@ class CreateNewTask : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_new_task)
 
-        val database = FirebaseDatabase.getInstance()
-        val myRef = database.getReference("message")
+        val database = FirebaseDatabase.getInstance().reference
 
-        myRef.setValue("Hello, World!")
-//        val name = findViewById<EditText>(R.id.TaskName)
-//        val dDate = findViewById<EditText>(R.id.DueDate)
-//        val aClass = findViewById<Spinner>(R.id.AssociatedClassDropDown)
-//        val aType = findViewById<Spinner>(R.id.AssnTypeDropDown)
+
+        database.setValue("Hello, World!")
+
+        val name = findViewById<EditText>(R.id.TaskName).toString()
+        val dDate = findViewById<EditText>(R.id.DueDate).toString()
+        val aClass = findViewById<Spinner>(R.id.AssociatedClassDropDown).toString()
+        val aType = findViewById<Spinner>(R.id.AssnTypeDropDown).toString()
 
         data class Task(
             val name: String = "",
@@ -36,18 +37,12 @@ class CreateNewTask : AppCompatActivity() {
             val aType: String = "",
             var uuid: String = "")
 
-        fun loadDatabase(firebaseData: DatabaseReference) {
-            val availableSalads: List<Task> = mutableListOf(
-                Task("Gherkin", "Fresh and delicious", "3", "4"),
-                Task("Lettuce", "Easy to prepare", "5", "6"),
-                Task("Tomato", "Boring but healthy", "6", "7"),
-                Task("Zucchini", "Healthy and gross", "8", "9")
-            )
-            availableSalads.forEach {
-                val key = firebaseData.child("").push().key!!
-                it.uuid = key
-                firebaseData.child("salads").child(key).setValue(it)
-            }
+        fun writeNewTask(name: String, dDate: String, aClass: String, aType:String) {
+            val task = Task(name, dDate, aClass, aType )
+            database.child("task").child(name).setValue(task)
         }
+        
+//        writeNewTask(name, dDate, aClass, aType)
+          writeNewTask("New", "11/10", "CS441", "HW")
     }
 }
