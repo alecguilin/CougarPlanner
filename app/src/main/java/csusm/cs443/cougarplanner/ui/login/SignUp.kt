@@ -37,6 +37,7 @@ class SignUp : AppCompatActivity() {
         var database = firebaseDatabase.getReference("Users").push()
 
         val username = findViewById<EditText>(R.id.username)
+        val name = findViewById<EditText>(R.id.name)
         val password = findViewById<EditText>(R.id.password)
         val signupbutton = findViewById<Button>(R.id.Login)
         val pb = findViewById(R.id.loading) as ProgressBar
@@ -44,7 +45,8 @@ class SignUp : AppCompatActivity() {
         signupbutton.setOnClickListener {
 
             val email: String = username.text.toString()
-            val pass: String =password.text.toString()
+            val pass: String = password.text.toString()
+            val name: String = name.text.toString()
             var attemptSuccess = true
 
             pb.visibility = ProgressBar.VISIBLE
@@ -76,7 +78,7 @@ class SignUp : AppCompatActivity() {
                         //we can change this implementation later
 
                         // Create Blank Template for user in the database
-                        var user = User("", email)
+                        var user = User("",name, email)
                         database.setValue(user)
 
 
@@ -93,5 +95,5 @@ class SignUp : AppCompatActivity() {
             pb.visibility = ProgressBar.INVISIBLE
         }
     }
-    data class User(var username: String, var email: String)
+    data class User(var username: String, var name: String, var email: String)
 }
