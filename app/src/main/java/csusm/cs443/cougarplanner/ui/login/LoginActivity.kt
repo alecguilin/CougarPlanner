@@ -58,9 +58,6 @@ class LoginActivity : AppCompatActivity() {
             //email: TeamNIWWD@gmail.com
             //pass: cougars
             mAuth.signInWithEmailAndPassword(uname, pass).addOnCompleteListener(this) { task ->
-
-
-
                 if (task.isSuccessful) {
 
                     // Sign in success

@@ -9,6 +9,7 @@ import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import csusm.cs443.cougarplanner.Logged_in_main_view
 
 import csusm.cs443.cougarplanner.R
@@ -31,7 +32,9 @@ class SignUp : AppCompatActivity() {
         setContentView(R.layout.activity_sign_up)
 
         // Initialize Firebase Auth
-        val mAuth = FirebaseAuth.getInstance()
+        var mAuth = FirebaseAuth.getInstance()
+        var firebaseDatabase = FirebaseDatabase.getInstance()
+        var database = firebaseDatabase.getReference("Users").push()
 
         val username = findViewById<EditText>(R.id.username)
         val password = findViewById<EditText>(R.id.password)
@@ -72,17 +75,23 @@ class SignUp : AppCompatActivity() {
                         //when user re opens app they are brought back to the beginning, requiring another log in
                         //we can change this implementation later
 
+                        // Create Blank Template for user in the database
+                        var user = User("", email)
+                        database.setValue(user)
+
+
                         val intent = Intent(this, Logged_in_main_view::class.java)
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
                         startActivity(intent)
                     } else {
                         pb.visibility = ProgressBar.INVISIBLE
-                        Toast.makeText(applicationContext, "Could not create account. Please try again later.", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(applicationContext, "Could not create account. Password must include characters and numbers. Please try again later.", Toast.LENGTH_SHORT).show()
                     }
                 }
             }
             pb.visibility = ProgressBar.INVISIBLE
         }
     }
+    data class User(var username: String, var email: String)
 }
