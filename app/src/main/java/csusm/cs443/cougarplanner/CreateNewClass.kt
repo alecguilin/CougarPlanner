@@ -24,7 +24,7 @@ class CreateNewClass : AppCompatActivity() {
         val cName  = findViewById<EditText>(R.id.TaskName)
         val pName = findViewById<EditText>(R.id.editText)
         // meeting days
-        val mTime = findViewById<EditText>(R.id.timeInput)
+        //val mTime = findViewById<EditText>(R.id.timeInput)
         val color = findViewById<Spinner>(R.id.AssnTypeDropDown)
 
 }

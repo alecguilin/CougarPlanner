@@ -1,5 +1,6 @@
 package csusm.cs443.cougarplanner
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.EditText
@@ -11,7 +12,9 @@ import androidx.core.app.ComponentActivity
 import androidx.core.app.ComponentActivity.ExtraData
 import androidx.core.content.ContextCompat.getSystemService
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
-
+import csusm.cs443.cougarplanner.ui.login.LoginActivity
+import kotlinx.android.synthetic.main.activity_create_new_task.*
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 class CreateNewTask : AppCompatActivity() {
@@ -25,10 +28,6 @@ class CreateNewTask : AppCompatActivity() {
 
         database.setValue("Hello, World!")
 
-        val name = findViewById<EditText>(R.id.TaskName).toString()
-        val dDate = findViewById<EditText>(R.id.DueDate).toString()
-        val aClass = findViewById<Spinner>(R.id.AssociatedClassDropDown).toString()
-        val aType = findViewById<Spinner>(R.id.AssnTypeDropDown).toString()
 
         data class Task(
             val name: String = "",
@@ -41,8 +40,22 @@ class CreateNewTask : AppCompatActivity() {
             val task = Task(name, dDate, aClass, aType )
             database.child("task").child(name).setValue(task)
         }
-        
-//        writeNewTask(name, dDate, aClass, aType)
-          writeNewTask("New", "11/10", "CS441", "HW")
+
+        fun writeTest(name: String){
+            database.setValue(name)
+        }
+        TaskSubmitButton.setOnClickListener {
+            val name = findViewById<EditText>(R.id.TaskName).text.toString()
+            val dDate = findViewById<EditText>(R.id.DueDate).text.toString()
+            val aClass = findViewById<Spinner>(R.id.AssociatedClassDropDown).toString()
+            val aType = findViewById<Spinner>(R.id.AssnTypeDropDown).toString()
+
+            //writeNewTask(name, dDate, "CS441", "test")
+            writeTest(name)
+
+
+        }
+  //         writeNewTask(name, dDate, aClass, aType)
+    //      writeNewTask("New", "11/10", "CS441", "HW")
     }
 }
