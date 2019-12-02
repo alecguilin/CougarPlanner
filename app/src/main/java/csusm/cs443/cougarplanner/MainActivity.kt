@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         // test database push
         val database = FirebaseDatabase.getInstance()
         val myRef = database.getReference("Name")
-        myRef.setValue("Bobby Jackson")
+        //myRef.setValue("Bobby Jackson")
 
         BIGBUTTON.setOnClickListener {
             startActivity(Intent(this, LoginActivity::class.java))

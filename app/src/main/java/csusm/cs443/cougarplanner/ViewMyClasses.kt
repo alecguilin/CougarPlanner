@@ -25,21 +25,21 @@ class ViewMyClasses : AppCompatActivity() {
         var course4 = Course("CS485","Ignatovsky", "Wednesday", "Yellow" )
 
         //database.setValue(course1)
-        database.setValue(course4)
+        //database.setValue(course4)
 //        database.setValue(course3)
 //        database.setValue(course4)
 
         // Read from db
-        database.addValueEventListener(object : ValueEventListener{
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                var value = dataSnapshot!!.value as HashMap<String, Any>
-                Log.d("Value", value.get("name").toString())
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                Log.d("Error", error!!.message)
-            }
-        })
+//        database.addValueEventListener(object : ValueEventListener{
+//            override fun onDataChange(dataSnapshot: DataSnapshot) {
+//                var value = dataSnapshot!!.value as HashMap<String, Any>
+//                Log.d("Value", value.get("name").toString())
+//            }
+//
+//            override fun onCancelled(error: DatabaseError) {
+//                Log.d("Error", error!!.message)
+//            }
+//        })
 
         addClassBtn.setOnClickListener {
             startActivity(Intent(this, CreateNewClass::class.java))
