@@ -15,7 +15,7 @@ import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 //import sun.jvm.hotspot.utilities.IntArray
 import android.widget.Button
 import com.google.firebase.auth.FirebaseUser
-
+import android.widget.ArrayAdapter
 import csusm.cs443.cougarplanner.ViewMyClasses
 
 import com.google.firebase.auth.FirebaseAuth
@@ -25,21 +25,31 @@ import com.google.firebase.auth.FirebaseAuth
 //import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 //import sun.jvm.hotspot.utilities.IntArray
 
+
+
 class CreateNewClass : AppCompatActivity() {
+
+    internal lateinit var colorOptions: Spinner
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_new_class)
 
+        colorOptions = findViewById<Spinner>(R.id.color)
+
+        val colors = arrayOf("Red", "Blue", "Yellow", "Green", "")
         var firebaseDatabase = FirebaseDatabase.getInstance()
         var database = firebaseDatabase.getReference("Users").push()
 
-        val cName  = findViewById<EditText>(R.id.TaskName)
+        val cName  = findViewById<EditText>(R.id.ClassName)
         val pName = findViewById<EditText>(R.id.editText)
+        val cAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, colors)
         val addCourseButton = findViewById<Button>(R.id.addCourseButton)
+
+        colorOptions.adapter = cAdapter
         // meeting days
         //val mTime = findViewById<EditText>(R.id.timeInput)
-        val color = findViewById<Spinner>(R.id.AssnTypeDropDown)
+        val color = findViewById<Spinner>(R.id.color)
 
         addCourseButton.setOnClickListener{
             val course_name: String = cName.text.toString()
