@@ -23,39 +23,37 @@ class CreateNewTask : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_new_task)
 
-        val database = FirebaseDatabase.getInstance().reference
-
-
-        database.setValue("Hello, World!")
-
-
-        data class Task(
-            val name: String = "",
-            val dDate: String = "",
-            val aClass: String = "",
-            val aType: String = "",
-            var uuid: String = "")
-
-        fun writeNewTask(name: String, dDate: String, aClass: String, aType:String) {
-            val task = Task(name, dDate, aClass, aType )
-            database.child("task").child(name).setValue(task)
-        }
-
-        fun writeTest(name: String){
-            database.setValue(name)
-        }
         TaskSubmitButton.setOnClickListener {
             val name = findViewById<EditText>(R.id.TaskName).text.toString()
             val dDate = findViewById<EditText>(R.id.DueDate).text.toString()
             val aClass = findViewById<Spinner>(R.id.AssociatedClassDropDown).toString()
             val aType = findViewById<Spinner>(R.id.AssnTypeDropDown).toString()
 
-            //writeNewTask(name, dDate, "CS441", "test")
-            writeTest(name)
+            writeNewTask(name, dDate, "CS441", "test")
+
 
 
         }
   //         writeNewTask(name, dDate, aClass, aType)
     //      writeNewTask("New", "11/10", "CS441", "HW")
     }
+
+    private val database = FirebaseDatabase.getInstance().reference
+
+
+    data class Task(
+        val name: String = "",
+        val dDate: String = "",
+        val aClass: String = "",
+        val aType: String = "",
+        var uuid: String = "")
+
+    private fun writeNewTask(name: String, dDate: String, aClass: String, aType:String) {
+        val task = Task(name, dDate, aClass, aType )
+        database.child("task").child(name).setValue(task)
+    }
+
+
+
+
 }
