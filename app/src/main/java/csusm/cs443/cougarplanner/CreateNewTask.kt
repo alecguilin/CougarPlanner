@@ -21,16 +21,21 @@ import kotlinx.android.synthetic.main.activity_main.*
 class CreateNewTask : AppCompatActivity() {
 
     internal lateinit var classOptions: Spinner
+    internal lateinit var typeOptions: Spinner
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_new_task)
 
         classOptions = findViewById<Spinner>(R.id.AssociatedClassDropDown)
+        typeOptions = findViewById<Spinner>(R.id.AssnTypeDropDown)
 
         val classes = arrayOf("CS 441", "CS 421", "CS 436")
-        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, classes)
-        classOptions.adapter = adapter
+        val types = arrayOf("HW", "Lab", "Project", "Reading", "Essay", "Exam")
+        val cAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, classes)
+        val tAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, types)
+        classOptions.adapter = cAdapter
+        typeOptions.adapter = tAdapter
 
         TaskSubmitButton.setOnClickListener {
             val name = findViewById<EditText>(R.id.TaskName).text.toString()
@@ -38,7 +43,9 @@ class CreateNewTask : AppCompatActivity() {
             val aClass = findViewById<Spinner>(R.id.AssociatedClassDropDown).toString()
             val aType = findViewById<Spinner>(R.id.AssnTypeDropDown).toString()
 
-            writeNewTask(name, dDate, "CS441", "test")
+            var task = Task(name, dDate, aClass, aType)
+
+            database.setValue(task)
 
 
 
@@ -57,10 +64,10 @@ class CreateNewTask : AppCompatActivity() {
         val aType: String = "",
         var uuid: String = "")
 
-    private fun writeNewTask(name: String, dDate: String, aClass: String, aType:String) {
-        val task = Task(name, dDate, aClass, aType )
-        database.child("task").child(name).setValue(task)
-    }
+//    private fun writeNewTask(name: String, dDate: String, aClass: String, aType:String) {
+//        val task = Task(name, dDate, aClass, aType )
+//        database.child("task").child(name).setValue(task)
+//    }
 
 
 
