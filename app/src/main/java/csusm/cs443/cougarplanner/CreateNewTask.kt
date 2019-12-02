@@ -12,6 +12,7 @@ import androidx.core.app.ComponentActivity
 import androidx.core.app.ComponentActivity.ExtraData
 import androidx.core.content.ContextCompat.getSystemService
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import android.widget.ArrayAdapter
 import csusm.cs443.cougarplanner.ui.login.LoginActivity
 import kotlinx.android.synthetic.main.activity_create_new_task.*
 import kotlinx.android.synthetic.main.activity_main.*
@@ -19,9 +20,17 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class CreateNewTask : AppCompatActivity() {
 
+    internal lateinit var classOptions: Spinner
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_new_task)
+
+        classOptions = findViewById<Spinner>(R.id.AssociatedClassDropDown)
+
+        val classes = arrayOf("CS 441", "CS 421", "CS 436")
+        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, classes)
+        classOptions.adapter = adapter
 
         TaskSubmitButton.setOnClickListener {
             val name = findViewById<EditText>(R.id.TaskName).text.toString()
