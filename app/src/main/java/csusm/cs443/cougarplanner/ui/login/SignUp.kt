@@ -78,7 +78,7 @@ class SignUp : AppCompatActivity() {
                         //we can change this implementation later
 
                         // Create Blank Template for user in the database
-                        var user = User("",name, email)
+                        var user = User(name, email)
                         database.setValue(user)
 
 
@@ -95,5 +95,5 @@ class SignUp : AppCompatActivity() {
             pb.visibility = ProgressBar.INVISIBLE
         }
     }
-    data class User(var username: String, var name: String, var email: String)
+    data class User(var name: String, var email: String)
 }

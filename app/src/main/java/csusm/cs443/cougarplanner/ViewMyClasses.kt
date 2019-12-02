@@ -17,15 +17,15 @@ class ViewMyClasses : AppCompatActivity() {
         setContentView(R.layout.activity_view_my_classes)
 
         var firebaseDatabase = FirebaseDatabase.getInstance()
-        var database = firebaseDatabase.getReference("Courses").push()
+        var database = firebaseDatabase.getReference("Users/Courses").push()
 
-        var course1 = Course("CS441","Zheng", "Thursday", "Red" )
-        var course2 = Course("CS436","Nahid", "Thursday", "Green" )
-        var course3 = Course("CS421","Rika Yoshi", "Tuesday", "Blue" )
-        var course4 = Course("CS485","Ignatovsky", "Wednesday", "Yellow" )
+//        var course1 = Course("CS441","Zheng", "Thursday", "Red" )
+//        var course2 = Course("CS436","Nahid", "Thursday", "Green" )
+//        var course3 = Course("CS421","Rika Yoshi", "Tuesday", "Blue" )
+//        var course4 = Course("CS485","Ignatovsky", "Wednesday", "Yellow" )
 
         //database.setValue(course1)
-        database.setValue(course4)
+        //database.setValue(course4)
 //        database.setValue(course3)
 //        database.setValue(course4)
 
@@ -45,5 +45,5 @@ class ViewMyClasses : AppCompatActivity() {
             startActivity(Intent(this, CreateNewClass::class.java))
         }
     }
-    data class Course(var name: String, var professor: String, var meetings: String, var color: String)
+    //data class Course(var name: String, var professor: String, var meetings: String, var color: String)
 }
