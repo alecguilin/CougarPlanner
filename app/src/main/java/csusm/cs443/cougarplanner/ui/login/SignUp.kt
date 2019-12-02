@@ -34,7 +34,8 @@ class SignUp : AppCompatActivity() {
         // Initialize Firebase Auth
         var mAuth = FirebaseAuth.getInstance()
         var firebaseDatabase = FirebaseDatabase.getInstance()
-        var database = firebaseDatabase.getReference("Users").push()
+        var database = firebaseDatabase.getReference("Users")
+       // var database = FirebaseDatabase.getInstance().reference.push()
 
         val username = findViewById<EditText>(R.id.username)
         val name = findViewById<EditText>(R.id.name)
@@ -77,9 +78,13 @@ class SignUp : AppCompatActivity() {
                         //when user re opens app they are brought back to the beginning, requiring another log in
                         //we can change this implementation later
 
+                        // Get Current UserID to use for reference path
+                        val firebaseUser = FirebaseAuth.getInstance().currentUser
+                        var uid = firebaseUser?.getUid().toString()
+
                         // Create Blank Template for user in the database
-                        var user = User("",name, email)
-                        database.setValue(user)
+                        var user = User(name, email)
+                        database.child(uid).setValue(user)
 
 
                         val intent = Intent(this, Logged_in_main_view::class.java)
@@ -95,5 +100,5 @@ class SignUp : AppCompatActivity() {
             pb.visibility = ProgressBar.INVISIBLE
         }
     }
-    data class User(var username: String, var name: String, var email: String)
+    data class User(var name: String, var email: String)
 }

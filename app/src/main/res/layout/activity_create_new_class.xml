@@ -56,7 +56,7 @@
         app:layout_constraintTop_toBottomOf="@+id/editText" />
 
     <EditText
-        android:id="@+id/TaskName"
+        android:id="@+id/ClassName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -74,7 +74,7 @@
         app:layout_constraintGuide_begin="378dp" />
 
     <Spinner
-        android:id="@+id/AssnTypeDropDown"
+        android:id="@+id/color"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:dropDownWidth="match_parent"
