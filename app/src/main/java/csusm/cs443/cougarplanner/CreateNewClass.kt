@@ -39,7 +39,8 @@ class CreateNewClass : AppCompatActivity() {
 
         val colors = arrayOf("Red", "Blue", "Yellow", "Green", "")
         var firebaseDatabase = FirebaseDatabase.getInstance()
-        var database = firebaseDatabase.getReference("Users").push()
+        //var database = firebaseDatabase.getReference("Users").push()
+        var database = FirebaseDatabase.getInstance().reference
 
         val cName  = findViewById<EditText>(R.id.ClassName)
         val pName = findViewById<EditText>(R.id.editText)
@@ -58,16 +59,19 @@ class CreateNewClass : AppCompatActivity() {
             var course = Course(course_name, professor)
 
 
-            val firebaseUser = FirebaseAuth.getInstance().currentUser
-            var userReference = firebaseUser
+            val firebaseUser = FirebaseAuth.getInstance().currentUser   // Instance of Current User
+            var uid = firebaseUser?.getUid().toString()// Get Current User's ID and converts to string
 
-            var uid = firebaseUser?.getUid().toString()
+            //database.child(uid).setValue(course)
 
-            database.child(uid).setValue(course)
+            // Get Reference for Logged in user and push the new course
+            val courseReference =
+                FirebaseDatabase.getInstance().reference.
+                    child("Users").child(uid).child("Courses")
+            courseReference.push().setValue(course)
+
+            // Go Back to Class View
             startActivity(Intent(this, ViewMyClasses::class.java))
-//            database.setValue(course)
-//            startActivity(Intent(this, ViewMyClasses::class.java))
-
         }
    }
     data class Course(var name: String, var professor: String)
