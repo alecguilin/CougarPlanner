@@ -24,7 +24,7 @@ class Logged_in_main_view : AppCompatActivity() {
 
         goto_my_tasks.setOnClickListener {
             // Needs to go to task list page
-            startActivity(Intent(this, ViewTasksCalendar::class.java))
+            startActivity(Intent(this, CreateNewTask::class.java))
         }
 
         goto_my_friends.setOnClickListener{
