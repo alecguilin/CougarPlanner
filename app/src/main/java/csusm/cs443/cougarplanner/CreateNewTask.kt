@@ -7,19 +7,25 @@ import android.os.Bundle
 import java.text.SimpleDateFormat
 import android.app.TimePickerDialog
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 //import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.DatabaseReference
 import androidx.core.app.ComponentActivity
 import androidx.core.app.ComponentActivity.ExtraData
 import androidx.core.content.ContextCompat.getSystemService
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import android.util.Log
 import android.widget.*
+import com.google.android.gms.tasks.Task
 import csusm.cs443.cougarplanner.ui.login.LoginActivity
 import kotlinx.android.synthetic.main.activity_create_new_task.*
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 import java.util.*
+import kotlin.collections.HashMap
 
 
 class CreateNewTask : AppCompatActivity() {
@@ -86,19 +92,14 @@ class CreateNewTask : AppCompatActivity() {
 
             if (redBtn.isChecked() == true)
                 btnColor =  "red"//"#FF0000"
-
             else if (blueBtn.isChecked() == true)
                 btnColor = "blue"//"#00BFFF"
-
             else if (greenBtn.isChecked() == true)
                 btnColor = "green"//"#32CD32"
-
             else if (yellowBtn.isChecked() == true)
                 btnColor = "yellow"//"#FFFF00"
-
             else if (purpleBtn.isChecked() == true)
                 btnColor = "purple"//"#9370DB"
-
             else if (pinkBtn.isChecked() == true)
                 btnColor = "pink"//"#FFC0CB"
 
@@ -116,20 +117,46 @@ class CreateNewTask : AppCompatActivity() {
                 tTime = "12:00"
             }
 
-            var task = nTask(tTitle, dateString, tTime, btnColor, tNotes.toString())
+            var task = nTask(tTitle, dateString, tTime, btnColor, tNotes)
 
             // Get Current User uid to set path
             val firebaseUser = FirebaseAuth.getInstance().currentUser
             var uid = firebaseUser?.getUid().toString()
 
             // Get Reference for Logged in user and push the new course
-            val courseReference =
+            val userReference =
                 FirebaseDatabase.getInstance().reference.
                     child("Users").child(uid).child("Tasks")
-            courseReference.push().setValue(task)
+            val key = userReference.push().key
+            userReference.child(key.toString()).setValue(task)
 
-            Toast.makeText(applicationContext, "Task has been successfully added.", Toast.LENGTH_SHORT).show()
+            val tasks: MutableList<nTask> = mutableListOf()
+
+            val menuListener = object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    tasks.clear()
+                    dataSnapshot.children.mapNotNullTo(tasks) { it.getValue<nTask>(nTask::class.java) }
+                }
+                override fun onCancelled(databaseError: DatabaseError) {
+                    println("loadPost:onCancelled ${databaseError.toException()}")
+                }
+            }
+            userReference.child("Tasks").addListenerForSingleValueEvent(menuListener)
+
+
+//            var taskList = HashMap<String, String>()
+//            taskList?.put(uid,key.toString())
+
+//            val taskReference =
+//                FirebaseDatabase.getInstance().reference.
+//                    child("Users").child(uid).child("TaskList")
+//            taskReference.setValue(taskList)
+
+            // Iterate through HashMap
+            Toast.makeText(applicationContext, "Tasks: ${tasks}", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(applicationContext, "Task has been successfully added.", Toast.LENGTH_SHORT).show()
         }
+
     }
 //    data class Task(
 //        var title: String = "",
