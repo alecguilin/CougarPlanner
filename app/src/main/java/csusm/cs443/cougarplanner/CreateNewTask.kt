@@ -120,7 +120,7 @@ class CreateNewTask : AppCompatActivity() {
                 tTime = "12:00"
             }
 
-            var task = Task(tTitle, dateString, tTime, "#7732a8", tNotes.toString())
+            var task = Task(tTitle, dateString, tTime, btnColor, tNotes.toString())
 
             // Get Current User uid to set path
             val firebaseUser = FirebaseAuth.getInstance().currentUser
