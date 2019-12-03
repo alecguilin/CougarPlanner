@@ -82,14 +82,18 @@ class CreateNewTask : AppCompatActivity() {
 
         // Submits task to Firebase
         TaskSubmitButton.setOnClickListener {
-            // Create Task Title
+            // Get Task Title and Notes
             var tTitle = findViewById<EditText>(R.id.TaskName).text.toString()
             var tNotes = findViewById<EditText>(R.id.Notes).text.toString()
 
+            // Convert Date to String Format
             var dateString = year.toString() + "/"+ month.toString() + "/"+ day.toString()
 
-            var task = Task(tTitle, dateString, time.toString(), "#7732a8", tNotes.toString())
 
+            // Create Task Object
+            var task = Task(tTitle, dateString, time.text.toString(), "#7732a8", tNotes.toString())
+
+            // Get Current User uid to set path
             val firebaseUser = FirebaseAuth.getInstance().currentUser
             var uid = firebaseUser?.getUid().toString()
 
