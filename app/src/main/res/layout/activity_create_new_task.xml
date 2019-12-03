@@ -16,13 +16,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.151" />
+        app:layout_constraintVertical_bias="0.157" />
 
     <TextView
         android:id="@+id/courseTitleLbl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Title:"
+        android:text="Task:"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="parent"
@@ -33,10 +33,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Due Date:"
+        android:text="Notes:"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/TaskName" />
 
+
+    <!--
     <TextView
         android:id="@+id/DaysLbl"
         android:layout_width="wrap_content"
@@ -44,7 +46,8 @@
         android:layout_marginTop="16dp"
         android:text="Associated Class:"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/DueDate" />
+        app:layout_constraintTop_toBottomOf="@+id/Notes" />
+       -->
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -54,6 +57,7 @@
         app:layout_constraintGuide_begin="48dp"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <!--
     <TextView
         android:id="@+id/TabColorLbl"
         android:layout_width="wrap_content"
@@ -62,13 +66,14 @@
         android:text="Assignment Type:"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/AssociatedClassDropDown" />
+        -->
 
     <EditText
-        android:id="@+id/DueDate"
+        android:id="@+id/Notes"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="date"
+        android:inputType="text"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/ProfNameLbl" />
@@ -84,6 +89,7 @@
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/courseTitleLbl" />
 
+    <!--
     <Spinner
         android:id="@+id/AssociatedClassDropDown"
         android:layout_width="0dp"
@@ -92,14 +98,16 @@
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/DaysLbl"
         android:spinnerMode="dropdown" />
+     -->
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="378dp" />
+        app:layout_constraintGuide_begin="426dp" />
 
+    <!--
     <Spinner
         android:id="@+id/AssnTypeDropDown"
         android:layout_width="0dp"
@@ -108,6 +116,53 @@
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/TabColorLbl"
         android:spinnerMode="dropdown" />
+    -->
+
+    <Button
+        android:id="@+id/DateBtn"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="88dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:text="Add Due Date"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/Notes" />
+
+    <TextView
+        android:id="@+id/Datetxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date"
+        tools:layout_editor_absoluteX="302dp"
+        tools:layout_editor_absoluteY="391dp" />
+
+    <Button
+        android:id="@+id/TimeBtn"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="88dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:text="Add Time"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/Notes" />
+
+    <TextView
+        android:id="@+id/Timetxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Time"
+        tools:layout_editor_absoluteX="141dp"
+        tools:layout_editor_absoluteY="392dp" />
 
     <Button
         android:id="@+id/TaskSubmitButton"
@@ -115,12 +170,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="160dp"
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
         android:text="Add this task"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/AssnTypeDropDown" />
+        app:layout_constraintTop_toBottomOf="@+id/Notes" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

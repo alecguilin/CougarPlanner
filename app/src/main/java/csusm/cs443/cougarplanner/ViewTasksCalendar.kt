@@ -11,6 +11,8 @@ class ViewTasksCalendar : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_tasks_calendar)
 
+
+
         AddTaskBtn.setOnClickListener {
             startActivity(Intent(this, CreateNewTask::class.java))
         }

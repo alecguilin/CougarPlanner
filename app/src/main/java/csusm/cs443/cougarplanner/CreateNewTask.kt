@@ -1,10 +1,15 @@
 package csusm.cs443.cougarplanner
 
+import android.app.DatePickerDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.EditText
 import android.widget.Spinner
+import android.widget.Button
+import android.widget.TextView
+import java.text.SimpleDateFormat
+import android.app.TimePickerDialog
 import com.google.firebase.auth.FirebaseAuth
 //import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -17,6 +22,8 @@ import android.widget.ArrayAdapter
 import csusm.cs443.cougarplanner.ui.login.LoginActivity
 import kotlinx.android.synthetic.main.activity_create_new_task.*
 import kotlinx.android.synthetic.main.activity_main.*
+import java.util.*
+import java.util.*
 
 
 class CreateNewTask : AppCompatActivity() {
@@ -28,23 +35,60 @@ class CreateNewTask : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_new_task)
 
-        classOptions = findViewById<Spinner>(R.id.AssociatedClassDropDown)
-        typeOptions = findViewById<Spinner>(R.id.AssnTypeDropDown)
+//        classOptions = findViewById<Spinner>(R.id.AssociatedClassDropDown)
+//        typeOptions = findViewById<Spinner>(R.id.AssnTypeDropDown)
 
-        val classes = arrayOf("CS 441", "CS 421", "CS 436")
-        val types = arrayOf("HW", "Lab", "Project", "Reading", "Essay", "Exam")
-        val cAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, classes)
-        val tAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, types)
-        classOptions.adapter = cAdapter
-        typeOptions.adapter = tAdapter
+//        val aClass = findViewById<Spinner>(R.id.AssociatedClassDropDown).toString()
+//        val aType = findViewById<Spinner>(R.id.AssnTypeDropDown).toString()
 
+        // Calendar
+        val c = Calendar.getInstance()
+        var year = c.get(Calendar.YEAR)
+        var month = c.get(Calendar.MONTH)
+        var day = c.get(Calendar.DAY_OF_MONTH)
+
+        // Time
+        val mPickTimeBtn = findViewById<Button>(R.id.TimeBtn)
+        val time     = findViewById<TextView>(R.id.Timetxt)
+
+//        val classes = arrayOf("CS 441", "CS 421", "CS 436")
+//        val types = arrayOf("HW", "Lab", "Project", "Reading", "Essay", "Exam")
+//        val cAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, classes)
+//        val tAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, types)
+//        classOptions.adapter = cAdapter
+//        typeOptions.adapter = tAdapter
+
+        // Sets the Time for the Event
+        mPickTimeBtn.setOnClickListener {
+            val cal = Calendar.getInstance()
+            val timeSetListener = TimePickerDialog.OnTimeSetListener { timePicker, hour, minute ->
+                cal.set(Calendar.HOUR_OF_DAY, hour)
+                cal.set(Calendar.MINUTE, minute)
+                time.text = SimpleDateFormat("HH:mm").format(cal.time)
+            }
+            TimePickerDialog(this, timeSetListener, cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), true).show()
+        }
+
+        // Sets the Date for the Event
+        DateBtn.setOnClickListener{
+            val dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, mYear, mMonth, mDay ->
+                Datetxt.setText(""+ mMonth + "/"+ mDay +"/" +mYear)
+                year = mYear
+                day = mDay
+                month = mMonth+1
+            }, year, month, day)
+            dpd.show()
+        }
+
+        // Submits task to Firebase
         TaskSubmitButton.setOnClickListener {
-            val name = findViewById<EditText>(R.id.TaskName).text.toString()
-            val dDate = findViewById<EditText>(R.id.DueDate).text.toString()
-            val aClass = findViewById<Spinner>(R.id.AssociatedClassDropDown).toString()
-            val aType = findViewById<Spinner>(R.id.AssnTypeDropDown).toString()
+            // Create Task Title
+            var tTitle = findViewById<EditText>(R.id.TaskName).text.toString()
+            var tNotes = findViewById<EditText>(R.id.Notes).text.toString()
 
-            var task = Task(name, dDate, aClass, aType)
+            var dateString = year.toString() + "/"+ month.toString() + "/"+ day.toString()
+
+            var task = Task(tTitle, dateString, time.toString(), "#7732a8", tNotes.toString())
 
             val firebaseUser = FirebaseAuth.getInstance().currentUser
             var uid = firebaseUser?.getUid().toString()
@@ -57,18 +101,9 @@ class CreateNewTask : AppCompatActivity() {
         }
     }
     data class Task(
-        val name: String = "",
-        val dTime: String = "",
-        val aClass: String = "",
-        val aType: String = "",
-        var uuid: String = "")
-
-//    private fun writeNewTask(name: String, dDate: String, aClass: String, aType:String) {
-//        val task = Task(name, dDate, aClass, aType )
-//        database.child("task").child(name).setValue(task)
-//    }
-
-
-
-
+        var title: String = "",
+        var due_date: String = "",
+        var due_time: String = "",
+        var color: String = "",
+        var notes: String = "")
 }
