@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CreateNewTask">
+
+    <ToggleButton
+        android:id="@+id/redBtn"
+        android:layout_width="60dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="8dp"
+        android:background="#FF0000"
+        android:checked="false"
+        android:textOff=" "
+        android:textOn="Red"
+        android:textSize="9sp"
+        app:layout_constraintStart_toEndOf="@+id/blueBtn"
+        app:layout_constraintTop_toBottomOf="@+id/colorSelector" />
+
+    <ToggleButton
+        android:id="@+id/blueBtn"
+        android:layout_width="60dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="8dp"
+        android:background="#00BFFF"
+        android:textOff=" "
+        android:textOn="Blue"
+        android:textSize="9sp"
+        app:layout_constraintStart_toEndOf="@+id/greenBtn"
+        app:layout_constraintTop_toBottomOf="@+id/colorSelector" />
+
+    <ToggleButton
+        android:id="@+id/greenBtn"
+        android:layout_width="60dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="8dp"
+        android:background="#32CD32"
+        android:textOff=" "
+        android:textOn="Green"
+        android:textSize="9sp"
+        app:layout_constraintStart_toEndOf="@+id/yellowBtn"
+        app:layout_constraintTop_toBottomOf="@+id/colorSelector" />
+
+    <ToggleButton
+        android:id="@+id/yellowBtn"
+        android:layout_width="60dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="8dp"
+        android:background="#FFFF00"
+        android:textOff=" "
+        android:textOn="Yellow"
+        android:textSize="9sp"
+        app:layout_constraintStart_toEndOf="@+id/purpleBtn"
+        app:layout_constraintTop_toBottomOf="@+id/colorSelector" />
+
+    <ToggleButton
+        android:id="@+id/purpleBtn"
+        android:layout_width="60dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="8dp"
+        android:background="#9370DB"
+        android:textOff=" "
+        android:textOn="Purple"
+        android:textSize="9sp"
+        app:layout_constraintStart_toEndOf="@+id/pinkBtn"
+        app:layout_constraintTop_toBottomOf="@+id/colorSelector" />
+
+    <ToggleButton
+        android:id="@+id/pinkBtn"
+        android:layout_width="60dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="8dp"
+        android:background="#FFC0CB"
+        android:textOff=" "
+        android:textOn="Pink"
+        android:textSize="9sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.085"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/colorSelector" />
+
+    <TextView
+        android:id="@+id/CreateCourseLbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add a New Task"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.157" />
+
+    <TextView
+        android:id="@+id/courseTitleLbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Task:"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.247" />
+
+    <TextView
+        android:id="@+id/ProfNameLbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Notes:"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/TaskName" />
+
+
+    <!--
+    <TextView
+        android:id="@+id/DaysLbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Associated Class:"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/Notes" />
+       -->
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="32dp"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!--
+    <TextView
+        android:id="@+id/TabColorLbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Assignment Type:"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/AssociatedClassDropDown" />
+        -->
+
+    <!--
+    <Spinner
+        android:id="@+id/AssociatedClassDropDown"
+        android:layout_width="0dp"
+        android:layout_height="47dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/DaysLbl"
+        android:spinnerMode="dropdown" />
+     -->
+
+    <EditText
+        android:id="@+id/Notes"
+        android:layout_width="327dp"
+        android:layout_height="39dp"
+        android:ems="10"
+        android:inputType="text"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/ProfNameLbl" />
+
+    <EditText
+        android:id="@+id/TaskName"
+        android:layout_width="327dp"
+        android:layout_height="39dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text=""
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/courseTitleLbl" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="426dp" />
+
+    <!--
+    <Spinner
+        android:id="@+id/AssnTypeDropDown"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/TabColorLbl"
+        android:spinnerMode="dropdown" />
+    -->
+
+    <Button
+        android:id="@+id/DateBtn"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:text="Add Due Date"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/TimeBtn"
+        app:layout_constraintTop_toBottomOf="@+id/Datetxt" />
+
+    <TextView
+        android:id="@+id/Datetxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.443"
+        app:layout_constraintStart_toEndOf="@+id/Timetxt"
+        app:layout_constraintTop_toBottomOf="@+id/Notes" />
+
+    <Button
+        android:id="@+id/TimeBtn"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:text="Add Time"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/Timetxt" />
+
+    <TextView
+        android:id="@+id/Timetxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="24dp"
+        android:text="Time"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/Notes" />
+
+    <TextView
+        android:id="@+id/colorSelector"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="24dp"
+        android:text="Please select a color:"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/TimeBtn" />
+
+    <Button
+        android:id="@+id/TaskSubmitButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:text="Add this task"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pinkBtn" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
