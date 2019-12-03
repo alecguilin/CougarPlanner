@@ -38,9 +38,9 @@ class CreateNewClass : AppCompatActivity() {
         colorOptions = findViewById<Spinner>(R.id.color)
 
         val colors = arrayOf("Red", "Blue", "Yellow", "Green", "")
-        var firebaseDatabase = FirebaseDatabase.getInstance()
+        //var firebaseDatabase = FirebaseDatabase.getInstance()
         //var database = firebaseDatabase.getReference("Users").push()
-        var database = FirebaseDatabase.getInstance().reference
+        //var database = FirebaseDatabase.getInstance().reference
 
         val cName  = findViewById<EditText>(R.id.ClassName)
         val pName = findViewById<EditText>(R.id.editText)

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.EditText
 import android.widget.Spinner
+import com.google.firebase.auth.FirebaseAuth
 //import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.DatabaseReference
@@ -45,7 +46,11 @@ class CreateNewTask : AppCompatActivity() {
 
             var task = Task(name, dDate, aClass, aType)
 
-            database.setValue(task)
+            val firebaseUser = FirebaseAuth.getInstance().currentUser
+            var uid = firebaseUser?.getUid().toString()
+
+            val taskReference = FirebaseDatabase.getInstance().reference.child("Users").
+                    child(uid).child("Tasks").courseReference.push().setValue(task)
 
 
 
@@ -54,7 +59,7 @@ class CreateNewTask : AppCompatActivity() {
     //      writeNewTask("New", "11/10", "CS441", "HW")
     }
 
-    private val database = FirebaseDatabase.getInstance().reference
+
 
 
     data class Task(
