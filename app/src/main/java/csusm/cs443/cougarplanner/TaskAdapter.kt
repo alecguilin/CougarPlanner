@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat
+
 //import com.squareup.picasso.Picasso
 //import com.squareup.picasso:picasso:2.71828
 
@@ -74,11 +76,23 @@ class TaskAdapter(private val context: Context,
         val detailTextView = holder.detailTextView
         val thumbnailImageView = holder.thumbnailImageView
 
+
+
         val task = getItem(position) as nTask
 
         titleTextView.text = task.title
         subtitleTextView.text = task.notes
         detailTextView.text = task.due_date
+
+        when(task.color){
+            "pink" -> thumbnailImageView.setColorFilter(ContextCompat.getColor(context, R.color.pink))
+            "blue" -> thumbnailImageView.setColorFilter(ContextCompat.getColor(context, R.color.blue))
+            "red" -> thumbnailImageView.setColorFilter(ContextCompat.getColor(context, R.color.red))
+            "green" -> thumbnailImageView.setColorFilter(ContextCompat.getColor(context, R.color.green))
+            "yellow" -> thumbnailImageView.setColorFilter(ContextCompat.getColor(context, R.color.yellow))
+            "purple" -> thumbnailImageView.setColorFilter(ContextCompat.getColor(context, R.color.purple))
+
+        }
 
         //Picasso.with(context).load(task.imageUrl).placeholder(R.mipmap.ic_launcher).into(thumbnailImageView)
 

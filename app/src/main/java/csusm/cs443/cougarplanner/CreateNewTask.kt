@@ -89,22 +89,22 @@ class CreateNewTask : AppCompatActivity() {
             var btnColor = "no color"
 
             if (redBtn.isChecked() == true)
-                btnColor = "#FF0000"
+                btnColor =  "red"//"#FF0000"
 
             else if (blueBtn.isChecked() == true)
-                btnColor = "#00BFFF"
+                btnColor = "blue"//"#00BFFF"
 
             else if (greenBtn.isChecked() == true)
-                btnColor = "#32CD32"
+                btnColor = "green"//"#32CD32"
 
             else if (yellowBtn.isChecked() == true)
-                btnColor = "#FFFF00"
+                btnColor = "yellow"//"#FFFF00"
 
             else if (purpleBtn.isChecked() == true)
-                btnColor = "#9370DB"
+                btnColor = "purple"//"#9370DB"
 
             else if (pinkBtn.isChecked() == true)
-                btnColor = "#FFC0CB"
+                btnColor = "pink"//"#FFC0CB"
 
             // Get Task Title and Notes
             var tTitle = findViewById<EditText>(R.id.TaskName).text.toString()
@@ -120,7 +120,7 @@ class CreateNewTask : AppCompatActivity() {
                 tTime = "12:00"
             }
 
-            var task = Task(tTitle, dateString, tTime, btnColor, tNotes.toString())
+            var task = nTask(tTitle, dateString, tTime, btnColor, tNotes.toString())
 
             // Get Current User uid to set path
             val firebaseUser = FirebaseAuth.getInstance().currentUser
@@ -133,10 +133,10 @@ class CreateNewTask : AppCompatActivity() {
             courseReference.push().setValue(task)
         }
     }
-    data class Task(
-        var title: String = "",
-        var due_date: String = "",
-        var due_time: String = "",
-        var color: String = "",
-        var notes: String = "")
+//    data class Task(
+//        var title: String = "",
+//        var due_date: String = "",
+//        var due_time: String = "",
+//        var color: String = "",
+//        var notes: String = "")
 }
