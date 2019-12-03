@@ -49,22 +49,16 @@ class CreateNewTask : AppCompatActivity() {
             val firebaseUser = FirebaseAuth.getInstance().currentUser
             var uid = firebaseUser?.getUid().toString()
 
-            val taskReference = FirebaseDatabase.getInstance().reference.child("Users").
-                    child(uid).child("Tasks").courseReference.push().setValue(task)
-
-
-
+            // Get Reference for Logged in user and push the new course
+            val courseReference =
+                FirebaseDatabase.getInstance().reference.
+                    child("Users").child(uid).child("Tasks")
+            courseReference.push().setValue(task)
         }
-  //         writeNewTask(name, dDate, aClass, aType)
-    //      writeNewTask("New", "11/10", "CS441", "HW")
     }
-
-
-
-
     data class Task(
         val name: String = "",
-        val dDate: String = "",
+        val dTime: String = "",
         val aClass: String = "",
         val aType: String = "",
         var uuid: String = "")
