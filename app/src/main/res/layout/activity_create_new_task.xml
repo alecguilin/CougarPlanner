@@ -6,6 +6,73 @@
     android:layout_height="match_parent"
     tools:context=".CreateNewTask">
 
+    <ToggleButton
+        android:id="@+id/redBtn"
+        android:layout_width="60dp"
+        android:layout_height="46dp"
+        android:background="#FF0000"
+        android:checked="false"
+        android:textOff=" "
+        android:textOn="Red"
+        android:textSize="9sp"
+        app:layout_constraintBottom_toTopOf="@+id/TaskSubmitButton"
+        app:layout_constraintStart_toEndOf="@+id/blueBtn" />
+
+    <ToggleButton
+        android:id="@+id/blueBtn"
+        android:layout_width="60dp"
+        android:layout_height="46dp"
+        android:textOff=" "
+        android:textOn="Blue"
+        android:textSize="9sp"
+        android:background="#00BFFF"
+        app:layout_constraintStart_toEndOf="@+id/greenBtn"
+        app:layout_constraintBottom_toTopOf="@+id/TaskSubmitButton" />
+
+    <ToggleButton
+        android:id="@+id/greenBtn"
+        android:layout_width="60dp"
+        android:layout_height="46dp"
+        android:textOff=" "
+        android:textOn="Green"
+        android:textSize="9sp"
+        android:background="#32CD32"
+        app:layout_constraintStart_toEndOf="@+id/yellowBtn"
+        app:layout_constraintBottom_toTopOf="@+id/TaskSubmitButton" />
+
+    <ToggleButton
+        android:id="@+id/yellowBtn"
+        android:layout_width="60dp"
+        android:layout_height="46dp"
+        android:textOff=" "
+        android:textOn="Yellow"
+        android:textSize="9sp"
+        android:background="#FFFF00"
+        app:layout_constraintStart_toEndOf="@+id/purpleBtn"
+        app:layout_constraintBottom_toTopOf="@+id/TaskSubmitButton" />
+
+    <ToggleButton
+        android:id="@+id/purpleBtn"
+        android:layout_width="60dp"
+        android:layout_height="46dp"
+        android:background="#9370DB"
+        android:textOff=" "
+        android:textOn="Purple"
+        android:textSize="9sp"
+        app:layout_constraintBottom_toTopOf="@+id/TaskSubmitButton"
+        app:layout_constraintStart_toEndOf="@+id/pinkBtn" />
+
+    <ToggleButton
+        android:id="@+id/pinkBtn"
+        android:layout_width="60dp"
+        android:layout_height="46dp"
+        android:background="#FFC0CB"
+        android:textOff=" "
+        android:textOn="Pink"
+        android:textSize="9sp"
+        app:layout_constraintBottom_toTopOf="@+id/TaskSubmitButton"
+        app:layout_constraintEnd_toStartOf="@+id/redBtn" />
+
     <TextView
         android:id="@+id/CreateCourseLbl"
         android:layout_width="wrap_content"
@@ -164,13 +231,21 @@
         tools:layout_editor_absoluteX="141dp"
         tools:layout_editor_absoluteY="392dp" />
 
+    <TextView
+        android:id="@+id/colorSelector"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Please select a color:"
+        app:layout_constraintBottom_toTopOf="@+id/purpleBtn"
+        tools:layout_editor_absoluteX="48dp" />
+
     <Button
         android:id="@+id/TaskSubmitButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
-        android:layout_marginTop="160dp"
+        android:layout_marginTop="224dp"
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
         android:text="Add this task"

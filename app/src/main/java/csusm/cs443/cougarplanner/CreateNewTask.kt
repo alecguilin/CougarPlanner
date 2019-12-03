@@ -51,6 +51,8 @@ class CreateNewTask : AppCompatActivity() {
         val mPickTimeBtn = findViewById<Button>(R.id.TimeBtn)
         val time     = findViewById<TextView>(R.id.Timetxt)
 
+
+
 //        val classes = arrayOf("CS 441", "CS 421", "CS 436")
 //        val types = arrayOf("HW", "Lab", "Project", "Reading", "Essay", "Exam")
 //        val cAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, classes)
@@ -82,6 +84,28 @@ class CreateNewTask : AppCompatActivity() {
 
         // Submits task to Firebase
         TaskSubmitButton.setOnClickListener {
+
+            //sets whatever button is selected as task color
+            var btnColor = "no color"
+
+            if (redBtn.isChecked() == true)
+                btnColor = "#FF0000"
+
+            else if (blueBtn.isChecked() == true)
+                btnColor = "#00BFFF"
+
+            else if (greenBtn.isChecked() == true)
+                btnColor = "#32CD32"
+
+            else if (yellowBtn.isChecked() == true)
+                btnColor = "#FFFF00"
+
+            else if (purpleBtn.isChecked() == true)
+                btnColor = "#9370DB"
+
+            else if (pinkBtn.isChecked() == true)
+                btnColor = "#FFC0CB"
+
             // Get Task Title and Notes
             var tTitle = findViewById<EditText>(R.id.TaskName).text.toString()
             var tNotes = findViewById<EditText>(R.id.Notes).text.toString()
@@ -89,9 +113,8 @@ class CreateNewTask : AppCompatActivity() {
             // Convert Date to String Format
             var dateString = year.toString() + "/"+ month.toString() + "/"+ day.toString()
 
-
             // Create Task Object
-            var task = Task(tTitle, dateString, time.text.toString(), "#7732a8", tNotes.toString())
+            var task = Task(tTitle, dateString, time.text.toString(), btnColor, tNotes.toString())
 
             // Get Current User uid to set path
             val firebaseUser = FirebaseAuth.getInstance().currentUser
