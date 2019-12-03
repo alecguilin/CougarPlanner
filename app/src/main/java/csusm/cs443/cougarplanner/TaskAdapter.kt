@@ -33,6 +33,10 @@ class TaskAdapter(private val context: Context,
 //        )
 //    }
 
+    fun remove(position: Int){
+        dataSource.removeAt(position)
+        notifyDataSetChanged()
+    }
     override fun getCount(): Int {
         return dataSource.size
     }
@@ -49,28 +53,26 @@ class TaskAdapter(private val context: Context,
         val view: View
         val holder: ViewHolder
 
-        // 1
+
         if (convertView == null) {
 
-            // 2
-            view = inflater.inflate(R.layout.list_task_detail, parent, false)
+            view = inflater.inflate(R.layout.list_item, parent, false)
 
-            // 3
+
             holder = ViewHolder()
             holder.thumbnailImageView = view.findViewById(R.id.task_list_color) as ImageView
             holder.titleTextView = view.findViewById(R.id.task_list_title) as TextView
             holder.subtitleTextView = view.findViewById(R.id.task_list_subtitle) as TextView
             holder.detailTextView = view.findViewById(R.id.task_list_detail) as TextView
 
-            // 4
             view.tag = holder
         } else {
-            // 5
+
             view = convertView
             holder = convertView.tag as ViewHolder
         }
 
-        // 6
+
         val titleTextView = holder.titleTextView
         val subtitleTextView = holder.subtitleTextView
         val detailTextView = holder.detailTextView

@@ -10,6 +10,14 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import android.widget.ListView
+import android.widget.AdapterView
+import android.view.View
+import android.widget.Toast
+import android.widget.AbsListView
+import com.hudomju.swipe.SwipeToDismissTouchListener
+import com.hudomju.swipe.adapter.ListViewAdapter
+import java.util.ArrayList
+import android.widget.Toast.LENGTH_SHORT
 
 import kotlinx.android.synthetic.main.activity_view_my_classes.*
 
@@ -32,6 +40,29 @@ class ViewMyClasses : AppCompatActivity() {
 
         val adapter = TaskAdapter(this, taskList)
         listView.adapter = adapter
+
+        val touchListener = SwipeToDismissTouchListener(
+            ListViewAdapter(listView),
+            object : SwipeToDismissTouchListener.DismissCallbacks<ListViewAdapter> {
+                override fun canDismiss(position: Int): Boolean {
+                    return true
+                }
+
+                override fun onDismiss(view: ListViewAdapter, position: Int) {
+                    adapter!!.remove(position)
+                }
+            } )
+        listView!!.setOnTouchListener(touchListener)
+        listView!!.setOnScrollListener(touchListener.makeScrollListener() as AbsListView.OnScrollListener)
+        listView!!.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->
+            if (touchListener.existPendingDismisses()) {
+                touchListener.undoPendingDismiss()
+            } else {
+                Toast.makeText(this@ViewMyClasses, "Position $position", LENGTH_SHORT).show()
+            }
+        }
+
+    }
 
 //        val context = this
 
@@ -108,7 +139,7 @@ class ViewMyClasses : AppCompatActivity() {
 //            }
 //        }
 //        ref.child("Task").addListenerForSingleValueEvent(menuListener)
-    }
+
 //    data class Task(
 //        var title: String = "",
 //        var due_date: String = "",
