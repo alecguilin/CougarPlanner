@@ -15,7 +15,7 @@ import androidx.core.content.ContextCompat
 
 
 class TaskAdapter(private val context: Context,
-                    private val dataSource: ArrayList<nTask>) : BaseAdapter() {
+                    private val dataSource: MutableList<nTask>) : BaseAdapter() {
 
     //val picasso = Picasso.get()
 

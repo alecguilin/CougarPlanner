@@ -10,7 +10,8 @@ class nTask(
     var due_time: String = "",
     var color: String = "",
 
-    var notes: String = ""){
+    var notes: String = "",
+    var user: String = ""){
 
     companion object{
 
@@ -27,7 +28,8 @@ class nTask(
                         tasks.getJSONObject(it).getString("due_date"),
                         tasks.getJSONObject(it).getString("due_time"),
                         tasks.getJSONObject(it).getString("color"),
-                        tasks.getJSONObject(it).getString("notes"))
+                        tasks.getJSONObject(it).getString("notes"),
+                         tasks.getJSONObject(it).getString("user"))
                 }
             } catch (e: JSONException){
                 e.printStackTrace()

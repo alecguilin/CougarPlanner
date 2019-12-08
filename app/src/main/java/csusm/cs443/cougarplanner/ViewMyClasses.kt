@@ -18,7 +18,6 @@ import com.hudomju.swipe.SwipeToDismissTouchListener
 import com.hudomju.swipe.adapter.ListViewAdapter
 import java.util.ArrayList
 import android.widget.Toast.LENGTH_SHORT
-
 import kotlinx.android.synthetic.main.activity_view_my_classes.*
 
 class ViewMyClasses : AppCompatActivity() {
@@ -36,8 +35,34 @@ class ViewMyClasses : AppCompatActivity() {
 
         listView = findViewById<ListView>(R.id.task_list_view)
 
-        val taskList = nTask.getTask("tasks.json", this)
+        //val taskList = nTask.getTask("tasks.json", this)
+        val firebaseUser = FirebaseAuth.getInstance().currentUser
+        var uid = firebaseUser?.getUid().toString()
 
+        // Get Reference for Logged in user and push the new course
+        val reference =
+            FirebaseDatabase.getInstance().reference.
+                child("Users").child(uid).child("Tasks")
+
+
+       // var taskList;
+        val taskList: ArrayList<nTask> = arrayListOf()
+
+        fun initTaskList() {
+            val menuListener = object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    taskList.clear()
+                    dataSnapshot.children.mapNotNullTo(taskList) { it.getValue<nTask>(nTask::class.java) }
+                }
+
+                override fun onCancelled(databaseError: DatabaseError) {
+                    println("loadPost:onCancelled ${databaseError.toException()}")
+                }
+            }
+            reference.addListenerForSingleValueEvent(menuListener)
+        }
+
+        initTaskList()
         val adapter = TaskAdapter(this, taskList)
         listView.adapter = adapter
 

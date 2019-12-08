@@ -116,7 +116,7 @@ class CreateNewTask : AppCompatActivity() {
                 tTime = "12:00"
             }
 
-            var task = nTask(tTitle, dateString, tTime, btnColor, tNotes.toString())
+            var task = nTask(tTitle, dateString, tTime, btnColor, tNotes)
 
             // Get Current User uid to set path
             val firebaseUser = FirebaseAuth.getInstance().currentUser
@@ -128,13 +128,18 @@ class CreateNewTask : AppCompatActivity() {
                     child("Users").child(uid).child("Tasks")
             courseReference.push().setValue(task)
 
+//            val firebaseUser = FirebaseAuth.getInstance().currentUser
+//            var user = firebaseUser?.getUid().toString()
+//
+//            var task = nTask(tTitle, dateString, tTime, btnColor, tNotes, user)
+//
+//            // Get Reference for Logged in user and push the new course
+//            val courseReference =
+//                FirebaseDatabase.getInstance().reference.child("Tasks")
+//            courseReference.push().setValue(task)
+
             Toast.makeText(applicationContext, "Task has been successfully added.", Toast.LENGTH_SHORT).show()
         }
     }
-//    data class Task(
-//        var title: String = "",
-//        var due_date: String = "",
-//        var due_time: String = "",
-//        var color: String = "",
-//        var notes: String = "")
+
 }
