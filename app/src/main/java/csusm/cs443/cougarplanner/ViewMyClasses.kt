@@ -23,12 +23,12 @@ import kotlinx.android.synthetic.main.activity_view_my_classes.*
 class ViewMyClasses : AppCompatActivity() {
 
 
-
-//    val firebaseUser = FirebaseAuth.getInstance().currentUser
+    //    val firebaseUser = FirebaseAuth.getInstance().currentUser
 //    var uid = firebaseUser?.getUid().toString()
 //    var ref = FirebaseDatabase.getInstance().reference.child("Users").child(uid)
 //    val taskList: MutableList<Task> = mutableListOf()
     private lateinit var listView: ListView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_my_classes)
@@ -41,14 +41,12 @@ class ViewMyClasses : AppCompatActivity() {
 
         // Get Reference for Logged in user and push the new course
         val reference =
-            FirebaseDatabase.getInstance().reference.
-                child("Users").child(uid).child("Tasks")
+            FirebaseDatabase.getInstance().reference.child("Tasks")
 
-      val taskList: MutableList<nTask> = mutableListOf()
+        val taskList: MutableList<nTask> = mutableListOf()
 
-       // var taskList;
         fun initTaskList() {
-            val menuListener = object : ValueEventListener {
+            val taskListener = object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     taskList.clear()
                     dataSnapshot.children.mapNotNullTo(taskList) { it.getValue<nTask>(nTask::class.java) }
@@ -58,7 +56,7 @@ class ViewMyClasses : AppCompatActivity() {
                     println("loadPost:onCancelled ${databaseError.toException()}")
                 }
             }
-            reference.addValueEventListener(menuListener)
+            reference.addValueEventListener(taskListener)
         }
 
         initTaskList()
@@ -75,42 +73,20 @@ class ViewMyClasses : AppCompatActivity() {
                 override fun onDismiss(view: ListViewAdapter, position: Int) {
                     adapter!!.remove(position)
                 }
-            } )
+            })
         listView!!.setOnTouchListener(touchListener)
         listView!!.setOnScrollListener(touchListener.makeScrollListener() as AbsListView.OnScrollListener)
-        listView!!.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->
-            if (touchListener.existPendingDismisses()) {
-                touchListener.undoPendingDismiss()
-            } else {
-                Toast.makeText(this@ViewMyClasses, "Position $position", LENGTH_SHORT).show()
+        listView!!.onItemClickListener =
+            AdapterView.OnItemClickListener { parent, view, position, id ->
+                if (touchListener.existPendingDismisses()) {
+                    touchListener.undoPendingDismiss()
+                } else {
+                    Toast.makeText(this@ViewMyClasses, "Position $position", LENGTH_SHORT).show()
+                }
             }
-        }
 
     }
-
-//        val context = this
-
-//        listView.setOnItemClickListener {_, _, position, _ ->
-//            val selectedTask = taskList[position]
-//
-//            val detailIntent = TaskDetail.newIntent(context, selectedTask)
-//
-//            startActivity(detailIntent)
-//        }
-
-//        initTaskList()
-
-
-
-//        var firebaseDatabase = FirebaseDatabase.getInstance()
-//        var database = firebaseDatabase.getReference("Users")
-
-//        var course1 = Course("CS441","Zheng", "Thursday", "Red" )
-//        var course2 = Course("CS436","Nahid", "Thursday", "Green" )
-//        var course3 = Course("CS421","Rika Yoshi", "Tuesday", "Blue" )
-//        var course4 = Course("CS485","Ignatovsky", "Wednesday", "Yellow" )
-
-
+}
 
 
 //        val firebaseUser = FirebaseAuth.getInstance().currentUser
@@ -143,32 +119,5 @@ class ViewMyClasses : AppCompatActivity() {
 //        })
 
 
-//        addClassBtn.setOnClickListener {
-//            startActivity(Intent(this, CreateNewClass::class.java))
-//        }
-//    }
 
-//    private fun initTaskList(){
-//        val menuListener = object: ValueEventListener {
-//            override fun onDataChange(dataSnapshot: DataSnapshot){
-//                taskList.clear()
-//                dataSnapshot.children.mapNotNullTo(taskList){
-//                    it.getValue<Task>(Task::class.java)
-//                }
-//
-//            }
-//
-//            override fun onCancelled(databaseError: DatabaseError){
-//                println("loadPost:onCancelled ${databaseError.toException()}")
-//            }
-//        }
-//        ref.child("Task").addListenerForSingleValueEvent(menuListener)
-
-//    data class Task(
-//        var title: String = "",
-//        var due_date: String = "",
-//        var due_time: String = "",
-//        var color: String = "",
-//        var notes: String = "")
-}
 
