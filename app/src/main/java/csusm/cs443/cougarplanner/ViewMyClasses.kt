@@ -61,7 +61,7 @@ class ViewMyClasses : AppCompatActivity() {
             reference.addValueEventListener(menuListener)
         }
 
-//        initTaskList()
+        initTaskList()
         val adapter = TaskAdapter(this, taskList)
         listView.adapter = adapter
 

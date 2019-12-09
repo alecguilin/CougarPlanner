@@ -120,7 +120,7 @@ class CreateNewTask : AppCompatActivity() {
 
             // Get Current User uid to set path
             val firebaseUser = FirebaseAuth.getInstance().currentUser
-            var uid = firebaseUser?.getUid().toString()
+            val uid = firebaseUser?.getUid().toString()
 
             // Get Reference for Logged in user and push the new course
             val reference =
