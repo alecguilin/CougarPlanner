@@ -33,7 +33,7 @@ class ViewMyClasses : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_my_classes)
 
-        listView = findViewById<ListView>(R.id.task_list_view)
+        listView = findViewById(R.id.task_list_view)
 
         //val taskList = nTask.getTask("tasks.json", this)
         val firebaseUser = FirebaseAuth.getInstance().currentUser
@@ -44,10 +44,9 @@ class ViewMyClasses : AppCompatActivity() {
             FirebaseDatabase.getInstance().reference.
                 child("Users").child(uid).child("Tasks")
 
+      val taskList: MutableList<nTask> = mutableListOf()
 
        // var taskList;
-        val taskList: ArrayList<nTask> = arrayListOf()
-
         fun initTaskList() {
             val menuListener = object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -59,10 +58,10 @@ class ViewMyClasses : AppCompatActivity() {
                     println("loadPost:onCancelled ${databaseError.toException()}")
                 }
             }
-            reference.addListenerForSingleValueEvent(menuListener)
+            reference.addValueEventListener(menuListener)
         }
 
-        initTaskList()
+//        initTaskList()
         val adapter = TaskAdapter(this, taskList)
         listView.adapter = adapter
 

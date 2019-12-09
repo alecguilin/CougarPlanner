@@ -116,17 +116,20 @@ class CreateNewTask : AppCompatActivity() {
                 tTime = "12:00"
             }
 
-            var task = nTask(tTitle, dateString, tTime, btnColor, tNotes)
+
 
             // Get Current User uid to set path
             val firebaseUser = FirebaseAuth.getInstance().currentUser
             var uid = firebaseUser?.getUid().toString()
 
             // Get Reference for Logged in user and push the new course
-            val courseReference =
+            val reference =
                 FirebaseDatabase.getInstance().reference.
-                    child("Users").child(uid).child("Tasks")
-            courseReference.push().setValue(task)
+                    child("Tasks")
+            val key = reference.push().key!!
+            var task = nTask(tTitle, dateString, tTime, btnColor, tNotes, uid, key)
+            reference.child(key).setValue(task)
+
 
 //            val firebaseUser = FirebaseAuth.getInstance().currentUser
 //            var user = firebaseUser?.getUid().toString()
