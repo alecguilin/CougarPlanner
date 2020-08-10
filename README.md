@@ -13,4 +13,4 @@ To access XML files, go to
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_app -> src -> main -> res -> layout_.
 
-For a more detailed report on the project, please refer to the _Final Report.pdf_ document for more info.
+For a more detailed report on the project, please refer to the _RequirementAnalysisDoc.pdf_ document for more info.
